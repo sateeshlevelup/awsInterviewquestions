@@ -1,0 +1,147 @@
+
+
+### Basic Level
+
+1. **What is Amazon EC2?**
+   - Amazon Elastic Compute Cloud (EC2) is a web service that provides resizable compute capacity in the cloud. It is designed to make web-scale cloud computing easier for developers.
+
+2. **What are the main features of Amazon EC2?**
+   - Virtual computing environments, called instances
+   - Pre-configured templates for instances, known as Amazon Machine Images (AMIs)
+   - Secure login information for instances using key pairs
+   - Storage volumes for temporary data, which is deleted when you stop or terminate your instance
+   - Persistent storage volumes using Amazon Elastic Block Store (EBS)
+   - Multiple networking options
+   - Scaling and load balancing capabilities
+   - Monitoring and managing instances using Amazon CloudWatch
+
+3. **What are the different types of instances in Amazon EC2?**
+   - General Purpose, Compute Optimized, Memory Optimized, Storage Optimized, Accelerated Computing, and Micro instances.
+
+4. **What is an Amazon Machine Image (AMI)?**
+   - An AMI is a template that contains the software configuration (operating system, application server, and applications) required to launch an instance.
+
+5. **What is the difference between stopping and terminating an EC2 instance?**
+   - Stopping an instance shuts it down but retains its EBS volumes, allowing for later restarts. Terminating an instance deletes the instance and any associated EBS volumes that are not configured to persist.
+
+6. **What is Elastic Block Store (EBS)?**
+   - Amazon EBS provides persistent block storage volumes for use with EC2 instances. Each EBS volume is automatically replicated within its Availability Zone to protect against component failure.
+
+7. **What is an Elastic IP address?**
+   - An Elastic IP address is a static IPv4 address designed for dynamic cloud computing. It allows you to mask instance failures by rapidly remapping the address to another instance.
+
+8. **How can you connect to an EC2 instance?**
+   - You can connect using SSH for Linux instances or Remote Desktop Protocol (RDP) for Windows instances, typically using key pairs for authentication.
+
+9. **What is the default region when launching an EC2 instance?**
+   - The default region is the one that you configured in your AWS Management Console or CLI settings.
+
+10. **What is the purpose of security groups in EC2?**
+    - Security groups act as virtual firewalls for instances to control inbound and outbound traffic.
+
+### Intermediate Level
+
+11. **What is the difference between an on-demand instance and a reserved instance?**
+    - On-demand instances are charged by the hour without any long-term commitment. Reserved instances require a one- or three-year commitment but offer significant cost savings.
+
+12. **What is an instance store?**
+    - Instance store volumes provide temporary block-level storage for your instance. This storage is located on disks that are physically attached to the host computer.
+
+13. **How can you resize an EC2 instance?**
+    - Stop the instance, change its instance type, and then start it again.
+
+14. **What is an Elastic Load Balancer (ELB)?**
+    - ELB automatically distributes incoming application traffic across multiple targets, such as EC2 instances, containers, and IP addresses.
+
+15. **What are placement groups?**
+    - Placement groups determine how instances are placed on underlying hardware. Types include Cluster, Spread, and Partition.
+
+16. **What is auto-scaling?**
+    - Auto-scaling allows you to automatically scale your EC2 capacity up or down according to conditions you define, ensuring you have the right number of instances running to handle the load.
+
+17. **What is the difference between vertical and horizontal scaling in EC2?**
+    - Vertical scaling involves changing the instance type to one with more resources. Horizontal scaling involves adding more instances to distribute the load.
+
+18. **How do you back up an EC2 instance?**
+    - Create snapshots of EBS volumes, or create an AMI of the instance which includes all the instance's EBS volumes.
+
+19. **What is the difference between an EBS volume and an instance store volume?**
+    - EBS volumes are persistent, can be detached and reattached, and are automatically replicated within their Availability Zone. Instance store volumes are temporary and are deleted when the instance is stopped or terminated.
+
+20. **What is a VPC and how does it relate to EC2?**
+    - A Virtual Private Cloud (VPC) is a virtual network dedicated to your AWS account. EC2 instances are launched within a VPC, which allows you to control network settings and configurations.
+
+### Advanced Level
+
+21. **What are EC2 spot instances and how do they work?**
+    - Spot instances allow you to bid for unused EC2 capacity. They can be terminated by AWS when the spot price exceeds your bid or when capacity is no longer available.
+
+22. **How can you encrypt data at rest in EC2?**
+    - Use EBS encryption for EBS volumes and configure encryption for instance store volumes using third-party tools.
+
+23. **What is EC2 Hibernate?**
+    - EC2 Hibernate allows you to pause your instances and resume them later, maintaining the instance state including the RAM contents.
+
+24. **How can you monitor EC2 instances?**
+    - Use Amazon CloudWatch to monitor instance performance metrics, set alarms, and automate actions based on metrics.
+
+25. **What are the different types of EBS volumes?**
+    - General Purpose SSD (gp2 and gp3), Provisioned IOPS SSD (io1 and io2), Throughput Optimized HDD (st1), and Cold HDD (sc1).
+
+26. **How can you ensure high availability for EC2 instances?**
+    - Use multiple Availability Zones and Regions, Auto Scaling groups, Elastic Load Balancing, and Route 53 for DNS failover.
+
+27. **What is the role of IAM roles in EC2?**
+    - IAM roles provide EC2 instances with temporary security credentials to access other AWS services securely without embedding long-term credentials in the instance.
+
+28. **What is EC2 user data and how is it used?**
+    - User data is a script that runs when an instance is launched. It can be used to perform common configuration tasks or run automation scripts.
+
+29. **How do you move an EC2 instance to another Availability Zone?**
+    - Create an AMI of the instance, launch a new instance from the AMI in the desired Availability Zone, and update configurations like Elastic IP or load balancer settings if necessary.
+
+30. **What is the EC2 Instance Metadata Service (IMDS)?**
+    - IMDS provides instance-specific data, such as instance ID, public keys, and security group details, that can be accessed from within the instance.
+
+### Expert Level
+
+31. **How can you use EC2 to implement a highly scalable web application?**
+    - Use Auto Scaling groups to handle load variations, ELB to distribute traffic, and RDS for scalable database management. Additionally, implement caching with services like ElastiCache and use S3 for static content.
+
+32. **What are the benefits of using EC2 Reserved Instances over On-Demand Instances?**
+    - Cost savings, capacity reservation, and flexibility with convertible reserved instances.
+
+33. **Explain the difference between default VPC and non-default VPC.**
+    - A default VPC is created by AWS automatically for each region and includes a default subnet in each Availability Zone. A non-default VPC is created by the user and allows for more customization.
+
+34. **How does Amazon EC2 ensure data security?**
+    - Security groups and network ACLs control traffic, IAM roles provide secure access to services, EBS volumes can be encrypted, and data in transit can be encrypted using SSL/TLS.
+
+35. **What is the significance of EC2 instance tenancy?**
+    - Tenancy options include shared (default), dedicated instances (isolated hardware for compliance), and dedicated hosts (complete control over instance placement on physical servers).
+
+36. **How can you automate the deployment of EC2 instances?**
+    - Use AWS CloudFormation, Terraform, or AWS OpsWorks. AWS Systems Manager can automate operational tasks.
+
+37. **What is the EC2 Instance Connect feature?**
+    - EC2 Instance Connect provides a secure and easy way to connect to instances using Secure Shell (SSH) without needing to manage SSH keys.
+
+38. **How do you handle instance termination protection?**
+    - Enable termination protection on the instance, which prevents accidental termination through the AWS Management Console or CLI.
+
+39. **How can you manage multiple EC2 instances efficiently?**
+    - Use AWS Systems Manager for patching, configuration management, and automation. Use tagging to organize and identify resources.
+
+40. **What are Elastic Fabric Adapters (EFAs) and when are they used?**
+    - EFAs provide high-performance networking for EC2 instances, ideal for HPC and machine learning applications that require low-latency and high-bandwidth communication.
+
+### Specific Use Cases and Deep Dives
+
+41. **How do you set up an EC2 instance to serve a website?**
+    - Launch an EC2 instance, configure security groups to allow HTTP/HTTPS traffic, install and configure a web server (Apache, Nginx), and associate a domain name using Route 53.
+
+42. **How do you configure an EC2 instance to connect to an RDS database?**
+    - Ensure the instance and RDS database are in the same VPC or have proper VPC peering. Configure security groups and network ACLs to allow database traffic, and update the database connection string in your application.
+
+43. **What is EC2 Fleet and how is it different from Auto Scaling?**
+    - EC2 Fleet allows you to launch multiple instance types and across different purchase options (On-D
