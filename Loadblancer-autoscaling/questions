@@ -1,0 +1,149 @@
+
+
+### Basic Level
+
+1. **What is an Elastic Load Balancer (ELB)?**
+   - ELB automatically distributes incoming application traffic across multiple targets, such as EC2 instances, containers, and IP addresses.
+
+2. **What are the different types of Elastic Load Balancers?**
+   - There are three types: Application Load Balancer (ALB), Network Load Balancer (NLB), and Classic Load Balancer (CLB).
+
+3. **What is Auto Scaling?**
+   - Auto Scaling helps you ensure that you have the right number of Amazon EC2 instances available to handle the load for your application.
+
+4. **What is the purpose of a Target Group in ELB?**
+   - A Target Group routes requests to one or more registered targets, such as EC2 instances, using specified routing criteria.
+
+5. **What is the difference between a public and a private load balancer?**
+   - A public load balancer has a publicly accessible IP address, while a private load balancer has an IP address that is accessible only within a VPC.
+
+6. **How does Auto Scaling work?**
+   - Auto Scaling dynamically adjusts the number of EC2 instances in your fleet based on metrics such as CPU utilization, network traffic, or custom CloudWatch metrics.
+
+7. **What are the benefits of using ELB?**
+   - High availability, fault tolerance, automated scaling, improved security, and centralized control.
+
+8. **What is a Launch Configuration?**
+   - A Launch Configuration is an instance configuration template that an Auto Scaling group uses to launch new instances.
+
+9. **What is a Launch Template?**
+   - A Launch Template allows you to create versioned, reusable instance configuration templates that support multiple AWS services, including EC2 Auto Scaling.
+
+10. **How do you create an Auto Scaling Group?**
+    - Define a Launch Configuration or Launch Template, then create the Auto Scaling Group with the desired number of instances, VPC subnets, and scaling policies.
+
+### Intermediate Level
+
+11. **What is a health check in ELB?**
+    - A health check monitors the health of registered targets by sending requests to determine if they are healthy and can handle traffic.
+
+12. **What is a scaling policy in Auto Scaling?**
+    - A scaling policy defines the conditions under which Auto Scaling adjusts the number of instances in an Auto Scaling Group.
+
+13. **How does an Application Load Balancer (ALB) work?**
+    - ALB operates at the application layer (Layer 7) of the OSI model, routing traffic based on content of the request, such as hostname, URL path, or HTTP headers.
+
+14. **How does a Network Load Balancer (NLB) work?**
+    - NLB operates at the transport layer (Layer 4) of the OSI model, routing traffic based on IP protocol data and providing ultra-low latency and high throughput.
+
+15. **What is the difference between step scaling and simple scaling policies?**
+    - Simple scaling policies add or remove a fixed number of instances based on a single alarm, while step scaling policies adjust the capacity by a variable amount based on the size of the alarm breach.
+
+16. **What are lifecycle hooks in Auto Scaling?**
+    - Lifecycle hooks allow you to perform custom actions when instances launch or terminate, such as running configuration scripts or draining connections.
+
+17. **What is a Listener in ELB?**
+    - A Listener is a process that checks for connection requests using the protocol and port you configure.
+
+18. **How do you handle session persistence with ALB?**
+    - Use sticky sessions (session affinity) to bind a user's session to a specific target within the target group, ensuring all requests during the session are sent to the same target.
+
+19. **What is an Auto Scaling cooldown period?**
+    - A cooldown period is a configurable setting that ensures the Auto Scaling group doesn't launch or terminate additional instances before the previous scaling activity takes effect.
+
+20. **How does AWS Auto Scaling differ from EC2 Auto Scaling?**
+    - AWS Auto Scaling manages scaling for multiple resources across multiple services, whereas EC2 Auto Scaling specifically manages the scaling of EC2 instances.
+
+### Advanced Level
+
+21. **How can you use Elastic Load Balancer with multiple AWS regions?**
+    - Use Route 53 with latency-based routing or Geo DNS to direct traffic to the appropriate load balancer in different regions.
+
+22. **What are target groups and how are they used in ALB and NLB?**
+    - Target groups route requests to one or more registered targets based on specified criteria. They are used to group EC2 instances, containers, and IP addresses for routing.
+
+23. **What is cross-zone load balancing?**
+    - Cross-zone load balancing allows a load balancer to distribute incoming requests evenly across all registered targets in all enabled Availability Zones.
+
+24. **How do you secure an Application Load Balancer?**
+    - Use SSL/TLS termination, configure security groups to control inbound and outbound traffic, and implement WAF (Web Application Firewall) for additional protection.
+
+25. **What is a weighted target group in an ALB?**
+    - Weighted target groups allow you to distribute traffic across multiple target groups with a specific proportion of requests going to each group, useful for blue-green deployments.
+
+26. **What are some common use cases for Auto Scaling?**
+    - Handling variable traffic patterns, ensuring high availability, maintaining application performance, and cost optimization.
+
+27. **What is a pre-warming request in ELB?**
+    - Pre-warming requests prepare the load balancer to handle anticipated increases in traffic by pre-allocating capacity.
+
+28. **How do you integrate Auto Scaling with AWS CloudWatch?**
+    - Create CloudWatch alarms that trigger scaling policies based on metrics such as CPU utilization, memory usage, or custom application metrics.
+
+29. **What are the differences between horizontal and vertical scaling?**
+    - Horizontal scaling involves adding more instances to handle load, while vertical scaling involves increasing the size (CPU, memory) of an existing instance.
+
+30. **How do you implement blue-green deployment with ELB and Auto Scaling?**
+    - Create separate Auto Scaling groups and target groups for the blue and green environments, and use weighted routing or DNS failover to gradually switch traffic from blue to green.
+
+### Specific Use Cases and Deep Dives
+
+31. **How does an ALB handle HTTP and HTTPS traffic?**
+    - ALB can route both HTTP and HTTPS traffic, performing SSL termination for HTTPS requests and routing based on rules defined for HTTP headers, paths, and hostnames.
+
+32. **How do you configure sticky sessions in ALB?**
+    - Enable the sticky sessions feature on the target group and configure the session duration to bind a user's session to a specific target.
+
+33. **How does a Classic Load Balancer (CLB) differ from ALB and NLB?**
+    - CLB operates at both the application and transport layers, does not support advanced features like host-based routing or WebSockets, and is typically used for legacy applications.
+
+34. **What are Auto Scaling cooldown periods and how do they work?**
+    - Cooldown periods prevent Auto Scaling from executing additional scaling actions until previous actions have taken effect, helping to stabilize scaling operations.
+
+35. **What are the steps to migrate from a Classic Load Balancer to an ALB?**
+    - Analyze your application traffic patterns, create an ALB with similar configuration, update DNS records, and gradually migrate traffic using DNS weighting or traffic mirroring.
+
+36. **How do you handle high availability with Auto Scaling?**
+    - Distribute instances across multiple Availability Zones, configure health checks, and use ELB to evenly distribute traffic.
+
+37. **What are the benefits of using AWS Auto Scaling over manually managing EC2 instances?**
+    - Improved resource management, automatic scaling based on real-time metrics, cost savings, and reduced operational overhead.
+
+38. **What is connection draining in ELB and why is it important?**
+    - Connection draining ensures that in-flight requests are completed before de-registering an instance, preventing loss of data or disruption of service.
+
+39. **How do you troubleshoot issues with Auto Scaling?**
+    - Review CloudWatch metrics and alarms, check Auto Scaling group activity history, analyze instance logs, and ensure correct configuration of scaling policies and health checks.
+
+40. **How do you optimize costs with Auto Scaling and ELB?**
+    - Use Auto Scaling to match instance capacity with demand, leverage Spot Instances for cost savings, and optimize load balancer configuration to minimize unused resources.
+
+### Expert Level
+
+41. **How does ELB handle sudden traffic spikes?**
+    - ELB automatically scales to handle sudden traffic spikes by distributing the load across registered targets and leveraging AWS global infrastructure.
+
+42. **What are the limitations of ELB and how can you work around them?**
+    - ELB has limits on the number of listeners, target groups, and rules. Use multiple load balancers, optimize listener and rule configuration, or contact AWS support for limit increases.
+
+43. **How do you manage traffic routing with ALB's advanced routing features?**
+    - Use path-based routing, host-based routing, HTTP header-based routing, and URL redirection to direct traffic based on specific criteria.
+
+44. **What is a weighted routing policy in ELB and when would you use it?**
+    - A weighted routing policy distributes traffic based on defined weights, useful for testing new application versions or conducting blue-green deployments.
+
+45. **How do you configure and use WebSockets with ALB?**
+    - ALB natively supports WebSockets, so you configure listeners and target groups to handle WebSocket connections as part of your application.
+
+46. **What are the best practices for scaling policies in Auto Scaling?**
+    - Use a combination of simple, step, and target tracking policies, ensure cooldown periods
